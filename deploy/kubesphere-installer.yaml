@@ -2,14 +2,15 @@
 apiVersion: v1
 data:
   ks-config.yaml: |
-    kube_apiserver_host: 192.168.0.2:6443
+    kube_apiserver_host: k8s.xiaolt.com:16443
     etcd_tls_enable: True
-    etcd_endpoint_ips: 192.168.0.2
+    etcd_endpoint_ips: 172.16.0.231,172.16.0.232,172.16.0.233
     disableMultiLogin: True
+    local_registry: registry.xiaolt.com/kubesphere
     elk_prefix: logstash
     persistence:
-      enable: false
-      storageClass: ""
+      enable: True
+      storageClass: "managed-nfs-storage"
 kind: ConfigMap
 metadata:
   name: kubesphere-config
